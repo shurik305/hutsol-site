@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bestil service online — Hutsol Service ApS</title>
+  <meta name="description" content="Vælg opgaven og send din forespørgsel på under et minut. Hvis opgaven passer, vender vi tilbage med et skriftligt, uforpligtende tilbud.">
+  <meta name="theme-color" content="#1f5fa6">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root{--blue:#1f5fa6;--blue2:#16487f;--sun:#f5b800;--ink:#1a2330;--bg:#f5f8fc;--line:#dbe6f3;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f5f8fc 0%,#ffffff 28%);line-height:1.55;}
+    a{color:var(--blue);}
+    .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--sun);color:#1a2330;font:inherit;font-weight:700;padding:13px 24px;border:0;border-radius:8px;text-decoration:none;cursor:pointer;}
+    .btn:disabled{cursor:not-allowed;opacity:.7;}
+    .btn.alt{background:#fff;color:var(--blue);border:2px solid var(--blue);}
+    header{position:relative;background:#183a63;color:#fff;overflow:hidden;}
+    header::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(17,47,81,.95) 0%,rgba(17,47,81,.82) 46%,rgba(17,47,81,.6) 100%),url('assets/hero-erhvervsrengoring.jpg') center/cover no-repeat;}
+    header .wrap{position:relative;z-index:1;}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.16);}
+    .brand{font-size:22px;font-weight:800;letter-spacing:.5px;color:#fff;text-decoration:none;}
+    .brand span{color:var(--sun);}
+    .top .ph{font-size:15px;font-weight:600;color:#fff;text-decoration:none;}
+    .hero{padding:56px 0 72px;display:grid;gap:28px;align-items:start;}
+    .hero-copy{max-width:680px;}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+    .hero h1{font-size:40px;line-height:1.12;margin-top:18px;text-shadow:0 2px 16px rgba(0,0,0,.28);}
+    .hero p{font-size:18px;max-width:640px;margin-top:16px;opacity:.97;text-shadow:0 2px 10px rgba(0,0,0,.22);}
+    main{padding:48px 0 64px;}
+    .layout{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:24px;align-items:start;}
+    .support-card,.wizard-shell{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 42px rgba(26,35,48,.08);}
+    .support-card{padding:24px;}
+    .support-list{display:grid;gap:16px;}
+    .support-row{display:flex;flex-direction:column;gap:4px;font-size:15px;}
+    .support-row .label{font-size:13px;color:#6c7a89;text-transform:uppercase;letter-spacing:.04em;}
+    .wizard-shell{padding:24px;}
+    .progress{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px;}
+    .progress-copy{display:grid;gap:4px;}
+    .progress-copy span{font-size:13px;font-weight:700;color:#6c7a89;text-transform:uppercase;letter-spacing:.04em;}
+    .progress-copy strong{font-size:16px;color:var(--blue2);}
+    .progress-bar{flex:1;height:10px;background:#e7eef7;border-radius:999px;overflow:hidden;}
+    .progress-bar span{display:block;height:100%;width:25%;background:linear-gradient(90deg,var(--sun) 0%,#ffd24f 100%);transition:width .2s ease;}
+    .wizard-step{border:0;padding:0;margin:0;}
+    .wizard-step + .wizard-step{margin-top:28px;}
+    .wizard-step legend{font-size:24px;font-weight:800;color:var(--blue2);margin-bottom:18px;}
+    .service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+    .service-card{position:relative;display:block;cursor:pointer;}
+    .service-card input{position:absolute;opacity:0;pointer-events:none;}
+    .service-card span{display:flex;align-items:center;justify-content:center;min-height:88px;padding:16px;border:1px solid #c9d6e4;border-radius:14px;background:#fff;color:var(--ink);font-weight:700;text-align:center;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;}
+    .service-card input:checked + span{border-color:var(--blue);box-shadow:0 0 0 3px rgba(31,95,166,.14);transform:translateY(-1px);}
+    .field-grid{display:grid;gap:16px;}
+    .field{display:flex;flex-direction:column;gap:6px;}
+    .field label,.choice-group > span,.form-meta{font-size:14px;color:var(--ink);}
+    .field label,.choice-group > span{font-weight:600;}
+    .field input,.field textarea{width:100%;padding:12px 14px;border:1px solid #c9d6e4;border-radius:10px;font:inherit;color:var(--ink);background:#fff;}
+    .field textarea{min-height:144px;resize:vertical;}
+    .field input:focus,.field textarea:focus{outline:2px solid rgba(31,95,166,.18);border-color:var(--blue);}
+    .choice-stack{display:grid;gap:10px;}
+    .choice{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #dbe6f3;border-radius:12px;background:#f9fbfe;}
+    .choice input{margin-top:3px;}
+    .wizard-footer{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px;}
+    .wizard-footer .btn{min-width:140px;}
+    .wizard-footer .linkish{font-weight:700;text-decoration:none;}
+    .form-meta{margin-top:8px;color:#687686;}
+    .form-status{min-height:28px;margin-top:18px;font-size:14px;}
+    .form-status[data-state="success"]{color:#165b30;}
+    .form-status[data-state="error"]{color:#8b2f1b;}
+    .hp{position:absolute;left:-5000px;opacity:0;pointer-events:none;}
+    footer{background:var(--ink);color:#cfd8e3;font-size:13px;padding:22px 0;}
+    .js-only{display:none;}
+    .js-ready .js-only{display:inline-flex;}
+    .js-ready .wizard-step{display:none;}
+    .js-ready .wizard-step.is-active{display:block;}
+    .js-ready .wizard-step + .wizard-step{margin-top:0;}
+    @media(max-width:860px){.layout{grid-template-columns:1fr;}.support-card{order:2;}.wizard-shell{order:1;}.hero h1{font-size:34px;}}
+    @media(max-width:640px){.service-grid{grid-template-columns:1fr;}.hero{padding:42px 0 54px;}.hero h1{font-size:30px;}.hero p{font-size:16px;}.top .ph{display:none;}.wizard-shell,.support-card{padding:20px;border-radius:14px;}.wizard-step legend{font-size:22px;}.wizard-footer .btn{width:100%;}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index.html">Hutsol <span>Service</span> ApS</a>
+      <a class="ph" href="tel:+4577178588">+45 77 17 85 88</a>
+    </div>
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Bestil online</div>
+        <h1>Bestil service online</h1>
+        <p>Vælg opgaven og send din forespørgsel på under et minut. Hvis opgaven passer, vender vi tilbage med et skriftligt, uforpligtende tilbud.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="layout">
+      <aside class="support-card">
+        <div class="support-list">
+          <div class="support-row">
+            <span class="label">Telefon</span>
+            <a class="btn alt" href="tel:+4577178588">Ring i stedet</a>
+          </div>
+          <div class="support-row">
+            <span class="label">E-mail</span>
+            <a href="mailto:kontakt@hutsol.dk">kontakt@hutsol.dk</a>
+          </div>
+        </div>
+      </aside>
+
+      <form class="wizard-shell" id="booking-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label for="company-website">Website</label>
+          <input id="company-website" type="text" name="company_website" autocomplete="off" tabindex="-1">
+        </div>
+        <input type="hidden" name="access_key" value="6e0b331d-04d7-4a4d-a662-24ab0fddae9b">
+        <input type="hidden" name="subject" value="Ny online bestilling fra hutsol.dk">
+        <input type="hidden" name="from_name" value="hutsol.dk kontaktform">
+        <input type="hidden" name="site_source" value="hutsol.dk bestil-side">
+        <input type="checkbox" name="botcheck" class="hp" style="display:none;" tabindex="-1" autocomplete="off">
+
+        <div class="progress" aria-live="polite">
+          <div class="progress-copy">
+            <span>Trin <span id="step-current">1</span> af 4</span>
+            <strong id="step-label">Hvad skal der laves?</strong>
+          </div>
+          <div class="progress-bar" aria-hidden="true"><span id="progress-fill"></span></div>
+        </div>
+
+        <fieldset class="wizard-step is-active" data-step="1">
+          <legend>Hvad skal der laves?</legend>
+          <div class="service-grid">
+            <label class="service-card">
+              <input type="radio" name="service" value="Erhvervsrengøring" required>
+              <span>Erhvervsrengøring</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Privatrengøring" required>
+              <span>Privatrengøring</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Have- og grøn vedligeholdelse" required>
+              <span>Have- og grøn vedligeholdelse</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Lettere nedrivning og oprydning" required>
+              <span>Lettere nedrivning og oprydning</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Vinduespolering" required>
+              <span>Vinduespolering</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Andet" required>
+              <span>Andet</span>
+            </label>
+          </div>
+          <div class="wizard-footer">
+            <button class="btn js-only" type="button" data-next>Næste</button>
+            <a class="linkish" href="tel:+4577178588">Ring i stedet</a>
+          </div>
+        </fieldset>
+
+        <fieldset class="wizard-step" data-step="2">
+          <legend>Om opgaven</legend>
+          <div class="field-grid">
+            <div class="field">
+              <label for="message">Kort beskrivelse</label>
+              <textarea id="message" name="message" placeholder="Hvad skal laves, hvor, og er der noget særligt vi skal vide?" required></textarea>
+            </div>
+            <div class="field">
+              <label for="location">Adresse eller by</label>
+              <input id="location" name="location" type="text" autocomplete="street-address">
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <button class="btn alt js-only" type="button" data-prev>Tilbage</button>
+            <button class="btn js-only" type="button" data-next>Næste</button>
+            <a class="linkish" href="tel:+4577178588">Ring i stedet</a>
+          </div>
+        </fieldset>
+
+        <fieldset class="wizard-step" data-step="3">
+          <legend>Hvordan og hvornår</legend>
+          <div class="field-grid">
+            <div class="choice-group">
+              <span>Fast aftale eller enkeltopgave?</span>
+              <div class="choice-stack">
+                <label class="choice"><input type="radio" name="scope" value="Fast aftale" required> <span>Fast aftale</span></label>
+                <label class="choice"><input type="radio" name="scope" value="Enkeltopgave" required> <span>Enkeltopgave</span></label>
+                <label class="choice"><input type="radio" name="scope" value="Ved ikke endnu" required> <span>Ved ikke endnu</span></label>
+              </div>
+            </div>
+            <div class="choice-group">
+              <span>Hvornår ønsker du opstart?</span>
+              <div class="choice-stack">
+                <label class="choice"><input type="radio" name="start_timing" value="Hurtigst muligt" required> <span>Hurtigst muligt</span></label>
+                <label class="choice"><input type="radio" name="start_timing" value="Inden for en måned" required> <span>Inden for en måned</span></label>
+                <label class="choice"><input type="radio" name="start_timing" value="Senere" required> <span>Senere</span></label>
+                <label class="choice"><input type="radio" name="start_timing" value="Ved ikke endnu" required> <span>Ved ikke endnu</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="best-time">Bedste tidspunkt at kontakte dig</label>
+              <input id="best-time" name="best_time" type="text" placeholder="Fx hverdage efter 15">
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <button class="btn alt js-only" type="button" data-prev>Tilbage</button>
+            <button class="btn js-only" type="button" data-next>Næste</button>
+            <a class="linkish" href="tel:+4577178588">Ring i stedet</a>
+          </div>
+        </fieldset>
+
+        <fieldset class="wizard-step" data-step="4">
+          <legend>Dine kontaktoplysninger</legend>
+          <div class="field-grid">
+            <div class="field">
+              <label for="name">Navn</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="phone">Telefon</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="company">Virksomhed / forening</label>
+              <input id="company" name="company" type="text" autocomplete="organization">
+            </div>
+          </div>
+          <div class="wizard-footer">
+            <button class="btn alt js-only" type="button" data-prev>Tilbage</button>
+            <button class="btn" type="submit">Send forespørgsel</button>
+            <a class="linkish" href="tel:+4577178588">Ring i stedet</a>
+          </div>
+          <div class="form-meta">Oplysningerne bruges kun til at vende tilbage på din henvendelse.</div>
+          <div class="form-status" id="form-status" aria-live="polite"></div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Hutsol Service ApS · CVR 46543610 · Vestjylland (Struer · Holstebro · Thyholm) · +45 77 17 85 88 · kontakt@hutsol.dk
+  </div>
+</footer>
+
+<!-- GoatCounter (privacy-friendly, cookieless analytics) -->
+<script data-goatcounter="https://hutsol.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script>
+  const bookingForm = document.getElementById('booking-form');
+  const bookingStatus = document.getElementById('form-status');
+  const steps = bookingForm ? Array.from(bookingForm.querySelectorAll('.wizard-step')) : [];
+  const stepCurrent = document.getElementById('step-current');
+  const stepLabel = document.getElementById('step-label');
+  const progressFill = document.getElementById('progress-fill');
+  const stepTitles = [
+    'Hvad skal der laves?',
+    'Om opgaven',
+    'Hvordan og hvornår',
+    'Dine kontaktoplysninger'
+  ];
+  let currentStep = 0;
+
+  function syncWizard() {
+    if (!bookingForm || !steps.length) {
+      return;
+    }
+    document.body.classList.add('js-ready');
+    steps.forEach(function (step, index) {
+      step.classList.toggle('is-active', index === currentStep);
+    });
+    if (stepCurrent) {
+      stepCurrent.textContent = String(currentStep + 1);
+    }
+    if (stepLabel) {
+      stepLabel.textContent = stepTitles[currentStep];
+    }
+    if (progressFill) {
+      progressFill.style.width = String(((currentStep + 1) / steps.length) * 100) + '%';
+    }
+  }
+
+  function validateStep(step) {
+    const fields = step.querySelectorAll('input, textarea');
+    for (const field of fields) {
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (bookingForm && bookingStatus && steps.length) {
+    syncWizard();
+
+    bookingForm.querySelectorAll('[data-next]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        const activeStep = steps[currentStep];
+        if (!validateStep(activeStep)) {
+          return;
+        }
+        currentStep = Math.min(currentStep + 1, steps.length - 1);
+        syncWizard();
+      });
+    });
+
+    bookingForm.querySelectorAll('[data-prev]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        currentStep = Math.max(currentStep - 1, 0);
+        syncWizard();
+      });
+    });
+
+    bookingForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      for (let i = 0; i < steps.length; i++) {
+        const fields = steps[i].querySelectorAll('input, textarea');
+        let stepValid = true;
+        for (const field of fields) {
+          if (!field.checkValidity()) { stepValid = false; break; }
+        }
+        if (!stepValid) {
+          currentStep = i;
+          syncWizard();
+          validateStep(steps[i]);
+          return;
+        }
+      }
+
+      const honeypot = bookingForm.querySelector('[name="company_website"]');
+      const nativeBotcheck = bookingForm.querySelector('[name="botcheck"]');
+      if ((honeypot && honeypot.value.trim() !== '') || (nativeBotcheck && nativeBotcheck.checked)) {
+        bookingStatus.textContent = '';
+        return;
+      }
+
+      const accessKeyField = bookingForm.querySelector('[name="access_key"]');
+      const accessKey = accessKeyField ? accessKeyField.value.trim() : '';
+      if (!accessKey || accessKey === 'WEB3FORMS_KEY_HER') {
+        bookingStatus.dataset.state = 'error';
+        bookingStatus.textContent = 'Formularen er ikke klar endnu. Ring på +45 77 17 85 88 eller skriv til kontakt@hutsol.dk i mellemtiden.';
+        return;
+      }
+
+      const subjectField = bookingForm.querySelector('[name="subject"]');
+      const serviceField = bookingForm.querySelector('[name="service"]:checked');
+      if (subjectField) {
+        subjectField.value = serviceField
+          ? 'Ny online bestilling fra hutsol.dk — ' + serviceField.value
+          : 'Ny online bestilling fra hutsol.dk';
+      }
+
+      const submitButton = bookingForm.querySelector('button[type="submit"]');
+      const originalLabel = submitButton.textContent;
+      const formData = new FormData(bookingForm);
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sender...';
+      bookingStatus.textContent = '';
+      bookingStatus.removeAttribute('data-state');
+
+      try {
+        const response = await fetch(bookingForm.getAttribute('action') || '', {
+          method: 'POST',
+          body: formData,
+          headers: { Accept: 'application/json' }
+        });
+        let result = {};
+        try {
+          result = await response.json();
+        } catch (jsonError) {}
+
+        if (!response.ok || !result.success) {
+          throw new Error('submit failed');
+        }
+
+        bookingForm.reset();
+        currentStep = 0;
+        syncWizard();
+        bookingStatus.dataset.state = 'success';
+        bookingStatus.innerHTML = 'Tak for din henvendelse. Vi vender tilbage hurtigst muligt.<br>Haster det? Ring på +45 77 17 85 88.';
+      } catch (error) {
+        bookingStatus.dataset.state = 'error';
+        bookingStatus.textContent = 'Noget gik galt ved afsendelse. Ring på +45 77 17 85 88 eller skriv til kontakt@hutsol.dk.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
