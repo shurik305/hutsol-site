@@ -57,9 +57,9 @@
     .field{display:flex;flex-direction:column;gap:6px;}
     .field label,.choice-group > span,.form-meta{font-size:14px;color:var(--ink);}
     .field label,.choice-group > span{font-weight:600;}
-    .field input,.field textarea{width:100%;padding:12px 14px;border:1px solid #c9d6e4;border-radius:10px;font:inherit;color:var(--ink);background:#fff;}
+    .field input,.field textarea,.field select{width:100%;padding:12px 14px;border:1px solid #c9d6e4;border-radius:10px;font:inherit;color:var(--ink);background:#fff;}
     .field textarea{min-height:144px;resize:vertical;}
-    .field input:focus,.field textarea:focus{outline:2px solid rgba(31,95,166,.18);border-color:var(--blue);}
+    .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid rgba(31,95,166,.18);border-color:var(--blue);}
     .choice-stack{display:grid;gap:10px;}
     .choice{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #dbe6f3;border-radius:12px;background:#f9fbfe;}
     .choice input{margin-top:3px;}
@@ -150,8 +150,8 @@
               <span>Have- og grøn vedligeholdelse</span>
             </label>
             <label class="service-card">
-              <input type="radio" name="service" value="Lettere nedrivning og oprydning" required>
-              <span>Lettere nedrivning og oprydning</span>
+              <input type="radio" name="service" value="Montage, demontering og nedrivning" required>
+              <span>Montage, demontering og nedrivning</span>
             </label>
             <label class="service-card">
               <input type="radio" name="service" value="Vinduespolering" required>
@@ -209,7 +209,7 @@
             </div>
             <div class="field">
               <label for="best-time">Bedste tidspunkt at kontakte dig</label>
-              <input id="best-time" name="best_time" type="text" placeholder="Fx hverdage efter 15">
+              <input id="best-time" name="best_time" type="text" placeholder="Fx formiddag, eftermiddag eller aften">
             </div>
           </div>
           <div class="wizard-footer">
@@ -238,6 +238,20 @@
               <label for="company">Virksomhed / forening</label>
               <input id="company" name="company" type="text" autocomplete="organization">
             </div>
+            <div class="field">
+              <label for="kilde">Hvor hørte du om os? (valgfrit)</label>
+              <select id="kilde" name="kilde">
+                <option value="">Vælg</option>
+                <option value="Google">Google</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Løbeseddel i postkassen">Løbeseddel i postkassen</option>
+                <option value="Opslag i butik eller på tavle">Opslag i butik eller på tavle</option>
+                <option value="Anbefaling">Anbefaling fra andre</option>
+                <option value="Så jer arbejde i området">Så jer arbejde i området</option>
+                <option value="Andet">Andet</option>
+              </select>
+            </div>
+            <input type="hidden" name="kampagne" value="">
           </div>
           <div class="wizard-footer">
             <button class="btn alt js-only" type="button" data-prev>Tilbage</button>
@@ -254,7 +268,7 @@
 
 <footer>
   <div class="wrap">
-    Hutsol Service ApS · CVR 46543610 · Vestjylland (Struer · Holstebro · Thyholm) · +45 77 17 85 88 · kontakt@hutsol.dk
+    Hutsol Service ApS · CVR 46543610 · Vestjylland (Struer · Holstebro · Thyholm) · +45 77 17 85 88 · kontakt@hutsol.dk · <a href="https://www.facebook.com/hutsolservice" style="color:#cfd8e3">Facebook</a>
   </div>
 </footer>
 
@@ -262,6 +276,16 @@
 <script data-goatcounter="https://hutsol.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <script>
+  // Kampagne-kode fra ?src= (fx løbeseddel-QR) huskes i sessionen og sendes med formularen.
+  (function () {
+    try {
+      var src = new URLSearchParams(window.location.search).get('src');
+      if (src) { sessionStorage.setItem('hutsol_src', src.slice(0, 40)); }
+      var saved = sessionStorage.getItem('hutsol_src') || '';
+      document.querySelectorAll('input[name="kampagne"]').forEach(function (el) { el.value = saved; });
+    } catch (e) {}
+  })();
+
   const bookingForm = document.getElementById('booking-form');
   const bookingStatus = document.getElementById('form-status');
   const steps = bookingForm ? Array.from(bookingForm.querySelectorAll('.wizard-step')) : [];
