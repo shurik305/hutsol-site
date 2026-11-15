@@ -27,22 +27,26 @@ nærområder. Firmaet kører ud til kunden; der er ingen butik eller showroom.
 
 ## Ydelser
 
+- Rengøring, oversigt over privat og erhverv: https://hutsol.dk/rengoering.html
 - Erhvervsrengøring – klinikker, kontorer, butikker, boligforeninger: https://hutsol.dk/erhvervsrengoering.html
 - Privat rengøring – fast rengøring, hovedrengøring, flytterengøring: https://hutsol.dk/privat-rengoering.html
-- Havehjælp – græsslåning, hækklipning, ukrudt, oprydning: https://hutsol.dk/havehjaelp.html
+- Havehjælp – græsslåning, hækklipning, ukrudt, tagrender, oprydning og bortkørsel af haveaffald: https://hutsol.dk/havehjaelp.html
 - Vinduespudsning og vinduespolering: https://hutsol.dk/vinduespudser.html
 
 ## Priser
 
 - Private: 375 kr. pr. time inkl. moms for rengøring og havehjælp. Minimum 2 timer pr. besøg.
 - Erhverv: fast månedspris efter gratis besigtigelse, skriftligt tilbud uden binding.
-- Servicefradrag: arbejdslønnen for rengøring og havearbejde i en privat bolig kan
+- Bortkørsel af haveaffald: 450 kr. pr. trailerlæs, 275 kr. pr. halvt læs inkl. moms.
+- Servicefradrag: arbejdslønnen for rengøring, vinduespudsning og havearbejde i en privat bolig kan
   være berettiget til servicefradrag. Kunden indberetter selv på skat.dk.
   Elektronisk betaling er et krav; kontant betaling giver ikke fradrag.
 
 ## Kontakt og bestilling
 
-- Tilbudsformular: https://hutsol.dk/bestil.html
+- Book en tid online: https://hutsol.dk/bestil.html#book-tid
+- Tilbudsformular: https://hutsol.dk/bestil.html#tilbud
+- Vi svarer: man–fre 8–20, lør 9–14
 - Telefon: +45 77 17 85 88
 - E-mail: kontakt@hutsol.dk
 
