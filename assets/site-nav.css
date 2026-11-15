@@ -1,0 +1,27 @@
+/* Shared navigation, cross-links and mobile order bar. v7, 15.11.2026 */
+.service-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 0 0;}
+.service-nav a{color:#fff;font-size:14px;font-weight:700;text-decoration:none;padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.32);white-space:nowrap;}
+.service-nav a:hover{background:rgba(255,255,255,.14);}
+.service-nav a[aria-current="page"],.service-nav a.is-active{background:#fff;color:#16487f;border-color:#fff;}
+.service-nav a.nav-book{background:#f5b800;color:#1a2330;border-color:#f5b800;margin-left:auto;}
+.service-nav a:focus-visible{outline:3px solid #f5b800;outline-offset:3px;}
+@media(max-width:640px){
+  .service-nav{flex-wrap:nowrap;overflow-x:auto;gap:6px;padding:10px 0 4px;scrollbar-width:none;}
+  .service-nav::-webkit-scrollbar{display:none;}
+  .service-nav a{flex:0 0 auto;font-size:13px;padding:7px 10px;}
+  .service-nav a.nav-book{display:none;}
+}
+.other-services{padding:44px 0;background:#f3f7fc;}
+.other-services h2{font-size:26px;color:#16487f;margin:0 0 6px;}
+.other-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px;}
+.other-grid a{display:block;background:#fff;border:1px solid #dbe6f3;border-radius:12px;padding:16px 18px;color:#16487f;font-weight:700;text-decoration:none;}
+.other-grid a:hover{border-color:#1f5fa6;}
+.other-grid a span{display:block;font-weight:400;color:#536375;font-size:14px;margin-top:4px;}
+.quote-alt{margin-top:8px;}
+.quote-alt>summary{cursor:pointer;padding:16px 20px;background:#fff;border:1px solid #dbe6f3;border-radius:12px;font-weight:700;color:#16487f;}
+.quote-alt[open]>summary{margin-bottom:18px;}
+.sticky-book{display:none;}
+@media(max-width:640px){
+  .sticky-book{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;justify-content:center;align-items:center;height:48px;border-radius:10px;background:#f5b800;color:#1a2330;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.2);}
+  body.has-sticky{padding-bottom:72px;}
+}

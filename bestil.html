@@ -97,6 +97,7 @@
     .book-card [hidden]{display:none!important;}
     @media(max-width:640px){.book-card{padding:18px;}.book-card .btn{width:100%;}.book-frame{width:calc(100% + 36px);margin:16px -18px -18px;border-radius:0 0 18px 18px;}}
   </style>
+<link rel="stylesheet" href="assets/site-nav.css">
 </head>
 <body>
 
@@ -106,11 +107,17 @@
       <a class="brand" href="index.html">Hutsol <span>Service</span> ApS</a>
       <a class="ph" href="tel:+4577178588">+45 77 17 85 88</a>
     </div>
+    <nav class="service-nav" aria-label="Vores ydelser">
+      <a href="index.html#ydelser">Rengøring</a>
+      <a href="havehjaelp.html">Havearbejde</a>
+      <a href="vinduespudser.html">Vinduespudsning</a>
+      <a class="nav-book" href="bestil.html#book-tid" aria-current="page">Bestil online</a>
+    </nav>
     <div class="hero">
       <div class="hero-copy">
         <div class="eyebrow">Bestil online</div>
         <h1>Bestil service online</h1>
-        <p>Vælg opgaven og send din forespørgsel på under et minut. Hvis opgaven passer, vender vi tilbage med et skriftligt, uforpligtende tilbud.</p>
+        <p>Vælg en ledig tid i kalenderen. Har du brug for et skriftligt tilbud først, kan du sende en forespørgsel længere nede på siden.</p>
       </div>
     </div>
   </div>
@@ -122,8 +129,8 @@
       <h2 id="book-tid-title">Book en tid i kalenderen</h2>
       <p>Vælg en ledig tid på 2 timer. Opgavens omfang og pris aftaler vi med dig bagefter. Skal tiden ændres eller aflyses, så ring eller skriv til os.</p>
       <button class="btn" type="button" id="book-tid-open" aria-expanded="false" hidden>Vis ledige tider</button>
-      <noscript><p>Kalenderen kræver JavaScript. Du kan sende en forespørgsel med formularen nedenfor eller ringe til os.</p></noscript>
-      <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses først, når du trykker på knappen. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
+      <noscript><p>Kalenderen kræver JavaScript. Du kan i stedet sende en forespørgsel under »Har du brug for et tilbud først?« længere nede eller ringe til os.</p></noscript>
+      <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses, når du åbner denne side. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
       <p class="book-note"><a href="https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec" target="_blank" rel="noopener noreferrer">Åbn kalenderen i en ny fane</a></p>
       <div id="book-tid-panel"></div>
     </section>
@@ -171,6 +178,14 @@
       });
     }());
     </script>
+    <script>
+    (function () {
+      var open = document.getElementById('book-tid-open'), alt = document.getElementById('tilbud');
+      if (open && !open.hidden) open.click();
+    }());
+    </script>
+    <details class="quote-alt" id="tilbud">
+      <summary>Har du brug for et tilbud først? Send en forespørgsel</summary>
     <div class="layout">
       <aside class="support-card">
         <div class="support-list">
@@ -329,6 +344,20 @@
         </fieldset>
       </form>
     </div>
+    </details>
+    <script>
+    (function () {
+      var alt = document.getElementById('tilbud');
+      function show() {
+        if (alt && location.hash === '#tilbud') { alt.open = true; alt.scrollIntoView(); }
+      }
+      var until = Date.now() + 5000;
+      window.addEventListener('message', function (event) {
+        if (Date.now() < until && event.origin === 'https://n-ykfixpxvp7vdc5mq3jdgcqhwml7vfwrpjnkxpwa-0lu-script.googleusercontent.com' && event.data && event.data.type === 'hutsol-booking-layout') show();
+      });
+      show(); window.addEventListener('hashchange', show);
+    }());
+    </script>
   </div>
 </main>
 

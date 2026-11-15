@@ -136,8 +136,9 @@
   @media(max-width:760px){.service-gallery{grid-template-columns:1fr;} .hero{min-height:390px;padding:44px 0 56px;} header::before{background-position:66% center;} .quote-shell,.form-grid{grid-template-columns:1fr;}}
   @media(max-width:560px){.top{padding:14px 0;}.brand{font-size:18px;}.hero{min-height:420px;padding:40px 0 52px;}.hero h1{font-size:28px;max-width:320px;}.hero p{font-size:16px;max-width:320px;}.top .ph{display:none;}}
 </style>
+<link rel="stylesheet" href="assets/site-nav.css">
 </head>
-<body>
+<body class="has-sticky">
 
 <header>
   <div class="wrap">
@@ -145,11 +146,17 @@
       <a href="/" style="color:#fff;text-decoration:none"><div class="brand">Hutsol <span>Service</span> ApS</div></a>
       <a class="ph" href="tel:+4577178588">+45 77 17 85 88</a>
     </div>
+    <nav class="service-nav" aria-label="Vores ydelser">
+      <a href="index.html#ydelser">Rengøring</a>
+      <a href="havehjaelp.html" aria-current="page">Havearbejde</a>
+      <a href="vinduespudser.html">Vinduespudsning</a>
+      <a class="nav-book" href="bestil.html#book-tid">Bestil online</a>
+    </nav>
     <div class="hero">
       <h1>Havehjælp og haveservice i Struer, Holstebro og Lemvig</h1>
       <p>Brug for en havemand? Vi tilbyder havehjælp og haveservice til private i Struer, Holstebro og Lemvig, løbende eller sæsonbaseret. Samme kontaktperson og skriftligt tilbud.</p>
       <div class="hero-actions">
-        <a class="btn" href="bestil.html">Få et gratis tilbud</a>
+        <a class="btn" href="bestil.html#tilbud">Få et gratis tilbud</a>
         <a class="btn alt" href="tel:+4577178588">Ring til os</a>
       </div>
       <div class="tags">✔ <b>Forsikret</b> &nbsp; ✔ <b>Fast kontaktperson</b> &nbsp; ✔ <b>Skriftligt tilbud</b></div>
@@ -207,9 +214,20 @@
   <div class="wrap">
     <h2>Få et gratis tilbud</h2>
     <p class="lead">Beskriv opgaven, så vender vi tilbage med et skriftligt tilbud. Du kan også ringe eller skrive til kontakt@hutsol.dk.</p>
-    <a class="btn" href="bestil.html">Få et gratis tilbud</a>
+    <a class="btn" href="bestil.html#tilbud">Få et gratis tilbud</a>
     <a class="btn alt" href="tel:+4577178588">Ring til os</a>
     <p style="margin-top:18px"><a href="/">Tilbage til forsiden</a></p>
+  </div>
+</section>
+
+<section class="other-services">
+  <div class="wrap">
+    <h2>Andre ydelser</h2>
+    <div class="other-grid">
+      <a href="privat-rengoering.html">Privat rengøring<span>Fast rengøring, hovedrengøring og flytterengøring</span></a>
+      <a href="erhvervsrengoering.html">Erhvervsrengøring<span>Kontorer, klinikker, butikker og trappevask</span></a>
+      <a href="vinduespudser.html">Vinduespudsning<span>For private, butikker, klinikker og kontorer</span></a>
+    </div>
   </div>
 </section>
 
@@ -223,5 +241,6 @@
 <script data-goatcounter="https://hutsol.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
+<a class="sticky-book" href="bestil.html#book-tid">Bestil online</a>
 </body>
 </html>

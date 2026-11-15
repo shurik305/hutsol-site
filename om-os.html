@@ -131,8 +131,9 @@
   @media(max-width:760px){.service-gallery{grid-template-columns:1fr;} .hero{min-height:390px;padding:44px 0 56px;} header::before{background-position:66% center;} .quote-shell,.form-grid{grid-template-columns:1fr;}}
   @media(max-width:560px){.top{padding:14px 0;}.brand{font-size:18px;}.hero{min-height:420px;padding:40px 0 52px;}.hero h1{font-size:28px;max-width:320px;}.hero p{font-size:16px;max-width:320px;}.top .ph{display:none;}}
 </style>
+<link rel="stylesheet" href="assets/site-nav.css">
 </head>
-<body>
+<body class="has-sticky">
 
 <header>
   <div class="wrap">
@@ -140,11 +141,17 @@
       <a href="/" style="color:#fff;text-decoration:none"><div class="brand">Hutsol <span>Service</span> ApS</div></a>
       <a class="ph" href="tel:+4577178588">+45 77 17 85 88</a>
     </div>
+    <nav class="service-nav" aria-label="Vores ydelser">
+      <a href="index.html#ydelser">Rengøring</a>
+      <a href="havehjaelp.html">Havearbejde</a>
+      <a href="vinduespudser.html">Vinduespudsning</a>
+      <a class="nav-book" href="bestil.html#book-tid">Bestil online</a>
+    </nav>
     <div class="hero">
       <h1>Om Hutsol Service ApS</h1>
       <p>Et lokalt servicefirma med hjemsted i Thyholm ved Struer. Her finder du de nøgterne fakta om firmaet: CVR, ydelser, område, priser, forsikring og kontakt.</p>
       <div class="hero-actions">
-        <a class="btn" href="bestil.html">Få et gratis tilbud</a>
+        <a class="btn" href="bestil.html#tilbud">Få et gratis tilbud</a>
         <a class="btn alt" href="tel:+4577178588">Ring til os</a>
       </div>
       <div class="tags">✔ <b>Forsikret</b> &nbsp; ✔ <b>Momsregistreret</b> &nbsp; ✔ <b>Fast kontaktperson</b></div>
@@ -234,7 +241,7 @@
       <div><div class="lbl">Hjemmeside</div><a href="https://hutsol.dk/">hutsol.dk</a></div>
       <div><div class="lbl">CVR</div>46543610</div>
     </div>
-    <p style="margin-top:22px"><a class="btn" href="bestil.html">Få et gratis tilbud</a></p>
+    <p style="margin-top:22px"><a class="btn" href="bestil.html#tilbud">Få et gratis tilbud</a></p>
     <p style="margin-top:10px"><a href="/">Tilbage til forsiden</a></p>
   </div>
 </section>
@@ -245,5 +252,6 @@
   </div>
 </footer>
 
+<a class="sticky-book" href="bestil.html#book-tid">Bestil online</a>
 </body>
 </html>
