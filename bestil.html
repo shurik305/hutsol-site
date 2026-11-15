@@ -314,13 +314,11 @@
 <script data-goatcounter="https://hutsol.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <script>
-  // Kampagne-kode fra ?src= (fx løbeseddel-QR) huskes i sessionen og sendes med formularen.
+  // Kampagne-kode fra den aktuelle URL sendes med formularen uden browserlagring.
   (function () {
     try {
-      var src = new URLSearchParams(window.location.search).get('src');
-      if (src) { sessionStorage.setItem('hutsol_src', src.slice(0, 40)); }
-      var saved = sessionStorage.getItem('hutsol_src') || '';
-      document.querySelectorAll('input[name="kampagne"]').forEach(function (el) { el.value = saved; });
+      var src = (new URLSearchParams(window.location.search).get('src') || '').slice(0, 40);
+      document.querySelectorAll('input[name="kampagne"]').forEach(function (el) { el.value = src; });
     } catch (e) {}
   })();
 
