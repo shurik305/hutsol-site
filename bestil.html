@@ -179,6 +179,11 @@
             });
           }
         });
+        var loading = document.createElement('p');
+        loading.className = 'book-note'; loading.setAttribute('role', 'status');
+        loading.textContent = 'Henter ledige tider…';
+        frame.addEventListener('load', function () { if (loading.parentNode) loading.parentNode.removeChild(loading); });
+        panel.appendChild(loading);
         panel.appendChild(frame);
         button.hidden = true; button.setAttribute('aria-expanded', 'true');
       });
