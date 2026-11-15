@@ -92,8 +92,8 @@
     .book-card h2{font-size:24px;color:var(--blue2);line-height:1.2;margin-bottom:8px;}
     .book-card p{margin-bottom:14px;}
     .book-note{font-size:14px;color:#536375;margin:12px 0 0;}
-    .book-frame{display:block;width:100%;height:1400px;border:0;margin-top:18px;background:#f5f8fc;border-radius:12px;}
-    @media(max-width:860px){.book-frame{height:2150px;}}
+    .book-frame{display:block;width:100%;height:2400px;border:0;margin-top:18px;background:#f5f8fc;border-radius:12px;}
+    @media(max-width:860px){.book-frame{height:3600px;}}
     .book-card [hidden]{display:none!important;}
     @media(max-width:640px){.book-card{padding:18px;}.book-card .btn{width:100%;}.book-frame{width:calc(100% + 36px);margin:16px -18px -18px;border-radius:0 0 18px 18px;}}
   </style>
@@ -124,6 +124,7 @@
       <button class="btn" type="button" id="book-tid-open" aria-expanded="false" hidden>Vis ledige tider</button>
       <noscript><p>Kalenderen kræver JavaScript. Du kan sende en forespørgsel med formularen nedenfor eller ringe til os.</p></noscript>
       <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses først, når du trykker på knappen. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
+      <p class="book-note"><a href="https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec" target="_blank" rel="noopener noreferrer">Åbn kalenderen i en ny fane</a></p>
       <div id="book-tid-panel"></div>
     </section>
     <script>
@@ -138,6 +139,33 @@
         frame.title = 'Vælg dato og tid hos Hutsol Service ApS';
         frame.referrerPolicy = 'strict-origin-when-cross-origin';
         frame.src = 'https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec';
+        var bookingOrigin = 'https://n-ykfixpxvp7vdc5mq3jdgcqhwml7vfwrpjnkxpwa-0lu-script.googleusercontent.com';
+        function ownsWindow(parent, source, depth) {
+          for (var i = 0; source && i <= depth; i++) {
+            if (source === parent) return true;
+            try {
+              var next = source.parent;
+              if (next === source) return false;
+              source = next;
+            } catch (error) { return false; }
+          }
+          return false;
+        }
+        frame.dataset.layoutState = 'waiting';
+        window.addEventListener('message', function (event) {
+          var data = event.data;
+          if (!data || data.type !== 'hutsol-booking-layout') return;
+          if (event.origin !== bookingOrigin) { frame.dataset.layoutState = 'origin-rejected'; return; }
+          if (!ownsWindow(frame.contentWindow, event.source, 3)) { frame.dataset.layoutState = 'source-rejected'; return; }
+          if (typeof data.height !== 'number' || !isFinite(data.height) || data.height < 300 || data.height > 6000) return;
+          frame.style.height = Math.ceil(data.height) + 'px';
+          frame.dataset.layoutState = 'resized';
+          if (typeof data.scrollTo === 'number' && isFinite(data.scrollTo) && data.scrollTo >= 0 && data.scrollTo < data.height) {
+            window.requestAnimationFrame(function () {
+              window.scrollTo({ top: window.scrollY + frame.getBoundingClientRect().top + data.scrollTo - 16, behavior: 'smooth' });
+            });
+          }
+        });
         panel.appendChild(frame);
         button.hidden = true; button.setAttribute('aria-expanded', 'true');
       });
