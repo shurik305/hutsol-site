@@ -131,12 +131,18 @@
       <button class="btn" type="button" id="book-tid-open" aria-expanded="false" hidden>Vis ledige tider</button>
       <noscript><p>Kalenderen kræver JavaScript. Du kan i stedet sende en forespørgsel under »Har du brug for et tilbud først?« længere nede eller ringe til os.</p></noscript>
       <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses, når du åbner denne side. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
-      <p class="book-note"><a href="https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec" target="_blank" rel="noopener noreferrer">Åbn kalenderen i en ny fane</a></p>
+      <p class="book-note"><a id="book-tid-external" href="https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec" target="_blank" rel="noopener noreferrer">Åbn kalenderen i en ny fane</a></p>
       <div id="book-tid-panel"></div>
     </section>
     <script>
     (function () {
       var button = document.getElementById('book-tid-open'), panel = document.getElementById('book-tid-panel'), note = document.getElementById('book-tid-note');
+      var serviceKey = new URLSearchParams(window.location.search).get('service');
+      var allowedServices = ['havearbejde', 'vinduespudsning', 'privatrengoering', 'erhvervsrengoering'];
+      var bookingUrl = 'https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec';
+      if (allowedServices.indexOf(serviceKey) !== -1) bookingUrl += '?service=' + encodeURIComponent(serviceKey);
+      var external = document.getElementById('book-tid-external');
+      if (external) external.href = bookingUrl;
       if (!button || !panel) return;
       button.hidden = false; if (note) note.hidden = false;
       button.addEventListener('click', function () {
@@ -145,7 +151,7 @@
         frame.className = 'book-frame';
         frame.title = 'Vælg dato og tid hos Hutsol Service ApS';
         frame.referrerPolicy = 'strict-origin-when-cross-origin';
-        frame.src = 'https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec';
+        frame.src = bookingUrl;
         var bookingOrigin = 'https://n-ykfixpxvp7vdc5mq3jdgcqhwml7vfwrpjnkxpwa-0lu-script.googleusercontent.com';
         function ownsWindow(parent, source, depth) {
           for (var i = 0; source && i <= depth; i++) {
@@ -378,6 +384,19 @@
       document.querySelectorAll('input[name="kampagne"]').forEach(function (el) { el.value = src; });
     } catch (e) {}
   })();
+
+  // Select only a known service from the entry link; the customer can change it.
+  (function () {
+    var defaults = {
+      havearbejde: 'Have- og grøn vedligeholdelse', vinduespudsning: 'Vinduespolering',
+      privatrengoering: 'Privatrengøring', erhvervsrengoering: 'Erhvervsrengøring'
+    };
+    var key = new URLSearchParams(window.location.search).get('service');
+    if (!Object.prototype.hasOwnProperty.call(defaults, key)) return;
+    document.querySelectorAll('#booking-form input[name="service"]').forEach(function (field) {
+      field.checked = field.value === defaults[key];
+    });
+  }());
 
   const bookingForm = document.getElementById('booking-form');
   const bookingStatus = document.getElementById('form-status');
