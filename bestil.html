@@ -124,7 +124,6 @@
       <button class="btn" type="button" id="book-tid-open" aria-expanded="false" hidden>Vis ledige tider</button>
       <noscript><p>Kalenderen kræver JavaScript. Du kan sende en forespørgsel med formularen nedenfor eller ringe til os.</p></noscript>
       <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses først, når du trykker på knappen. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
-      <p class="book-note"><a href="https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec" target="_blank" rel="noopener noreferrer">Åbn kalenderen i en ny fane</a></p>
       <div id="book-tid-panel"></div>
     </section>
     <script>
@@ -139,29 +138,6 @@
         frame.title = 'Vælg dato og tid hos Hutsol Service ApS';
         frame.referrerPolicy = 'strict-origin-when-cross-origin';
         frame.src = 'https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec';
-        var bookingOrigin = 'https://n-ykfixpxvp7vdc5mq3jdgcqhwml7vfwrpjnkxpwa-0lu-script.googleusercontent.com';
-        function ownsWindow(parent, source, depth) {
-          if (parent === source) return true;
-          if (!parent || !depth) return false;
-          try {
-            for (var i = 0; i < Math.min(parent.length, 4); i++) {
-              if (ownsWindow(parent[i], source, depth - 1)) return true;
-            }
-          } catch (error) {}
-          return false;
-        }
-        window.addEventListener('message', function (event) {
-          var data = event.data;
-          if (event.origin !== bookingOrigin || !ownsWindow(frame.contentWindow, event.source, 3)) return;
-          if (!data || data.type !== 'hutsol-booking-layout' || typeof data.height !== 'number' || !isFinite(data.height)) return;
-          if (data.height < 300 || data.height > 6000) return;
-          frame.style.height = Math.ceil(data.height) + 'px';
-          if (typeof data.scrollTo === 'number' && isFinite(data.scrollTo) && data.scrollTo >= 0 && data.scrollTo < data.height) {
-            window.requestAnimationFrame(function () {
-              window.scrollTo({ top: window.scrollY + frame.getBoundingClientRect().top + data.scrollTo - 16, behavior: 'smooth' });
-            });
-          }
-        });
         panel.appendChild(frame);
         button.hidden = true; button.setAttribute('aria-expanded', 'true');
       });
