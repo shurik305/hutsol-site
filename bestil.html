@@ -88,6 +88,14 @@
     .js-ready .wizard-step + .wizard-step{margin-top:0;}
     @media(max-width:860px){.layout{grid-template-columns:1fr;}.support-card{order:2;}.wizard-shell{order:1;}.hero h1{font-size:34px;}}
     @media(max-width:640px){.service-grid{grid-template-columns:1fr;}.hero{padding:42px 0 54px;}.hero h1{font-size:30px;}.hero p{font-size:16px;}.top .ph{display:none;}.wizard-shell,.support-card{padding:20px;border-radius:14px;}.wizard-step legend{font-size:22px;}.wizard-footer .btn{width:100%;}}
+    .book-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 18px 42px rgba(26,35,48,.08);margin-bottom:24px;min-width:0;}
+    .book-card h2{font-size:24px;color:var(--blue2);line-height:1.2;margin-bottom:8px;}
+    .book-card p{margin-bottom:14px;}
+    .book-note{font-size:14px;color:#536375;margin:12px 0 0;}
+    .book-frame{display:block;width:100%;height:1400px;border:0;margin-top:18px;background:#f5f8fc;border-radius:12px;}
+    @media(max-width:860px){.book-frame{height:2150px;}}
+    .book-card [hidden]{display:none!important;}
+    @media(max-width:640px){.book-card{padding:18px;}.book-card .btn{width:100%;}.book-frame{width:calc(100% + 36px);margin:16px -18px -18px;border-radius:0 0 18px 18px;}}
   </style>
 </head>
 <body>
@@ -110,6 +118,31 @@
 
 <main>
   <div class="wrap">
+    <section class="book-card" id="book-tid" aria-labelledby="book-tid-title">
+      <h2 id="book-tid-title">Book en tid i kalenderen</h2>
+      <p>Vælg en ledig tid på 2 timer. Opgavens omfang og pris aftaler vi med dig bagefter. Skal tiden ændres eller aflyses, så ring eller skriv til os.</p>
+      <button class="btn" type="button" id="book-tid-open" aria-expanded="false" hidden>Vis ledige tider</button>
+      <noscript><p>Kalenderen kræver JavaScript. Du kan sende en forespørgsel med formularen nedenfor eller ringe til os.</p></noscript>
+      <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses først, når du trykker på knappen. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
+      <div id="book-tid-panel"></div>
+    </section>
+    <script>
+    (function () {
+      var button = document.getElementById('book-tid-open'), panel = document.getElementById('book-tid-panel'), note = document.getElementById('book-tid-note');
+      if (!button || !panel) return;
+      button.hidden = false; if (note) note.hidden = false;
+      button.addEventListener('click', function () {
+        if (panel.firstChild) return;
+        var frame = document.createElement('iframe');
+        frame.className = 'book-frame';
+        frame.title = 'Vælg dato og tid hos Hutsol Service ApS';
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.src = 'https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec';
+        panel.appendChild(frame);
+        button.hidden = true; button.setAttribute('aria-expanded', 'true');
+      });
+    }());
+    </script>
     <div class="layout">
       <aside class="support-card">
         <div class="support-list">
