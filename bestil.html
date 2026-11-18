@@ -224,6 +224,8 @@
         <input type="hidden" name="site_source" value="hutsol.dk bestil-side">
         <input type="checkbox" name="botcheck" class="hp" style="display:none;" tabindex="-1" autocomplete="off">
 
+        <p id="visit-summary" hidden></p>
+        <input id="visit-choice" type="hidden" name="besøg" disabled>
         <div class="progress" aria-live="polite">
           <div class="progress-copy">
             <span>Trin <span id="step-current">1</span> af 4</span>
@@ -391,6 +393,29 @@
       document.querySelectorAll('input[name="kampagne"]').forEach(function (el) { el.value = src; });
     } catch (e) {}
   })();
+
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var visit = params.get('visit');
+    var summary = document.getElementById('visit-summary');
+    var field = document.getElementById('visit-choice');
+    var options = document.querySelectorAll('#booking-form input[name="service"]');
+    function updateVisit() {
+      var choice = document.querySelector('#booking-form input[name="service"]:checked');
+      var selected = choice ? choice.value : '';
+      var label = '';
+      if (visit === 'kort' && (!selected || selected === 'Privatrengøring' || selected === 'Have- og grøn vedligeholdelse')) {
+        label = '1 time på Thyholm · 600 kr. inkl. moms og kørsel';
+      }
+      if (visit === 'besigtigelse' && selected === 'Erhvervsrengøring') label = 'Gratis besigtigelse til erhvervsrengøring';
+      field.disabled = !label;
+      field.value = label;
+      summary.hidden = !label;
+      summary.textContent = label;
+    }
+    options.forEach(function (option) { option.addEventListener('change', updateVisit); });
+    document.addEventListener('DOMContentLoaded', updateVisit);
+  }());
 
   // Select only a known service from the entry link; the customer can change it.
   (function () {

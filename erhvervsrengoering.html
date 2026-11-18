@@ -143,16 +143,15 @@
       <a href="havehjaelp.html">Havearbejde</a>
       <a href="vinduespudser.html">Vinduespudsning</a>
       <a href="priser.html">Priser</a>
-      <a class="nav-book" href="bestil.html?service=erhvervsrengoering#book-tid">Bestil online</a>
+      <a class="nav-book" href="bestil.html?service=erhvervsrengoering&amp;visit=besigtigelse#tilbud">Aftal en gratis besigtigelse</a>
     </nav>
     <div class="hero">
       <h1>Erhvervsrengøring i Struer, Holstebro og Lemvig</h1>
       <p>Kontorrengøring og fast rengøring for virksomheder og boligforeninger i Struer, Holstebro og Lemvig. Vi gør rent, når det passer jer, også uden for åbningstiden, så I ikke bliver forstyrret. Fast kontaktperson og skriftligt tilbud.</p>
       <div class="hero-actions">
-        <a class="btn" href="bestil.html?service=erhvervsrengoering#book-tid">Bestil online</a>
+        <a class="btn" href="bestil.html?service=erhvervsrengoering&amp;visit=besigtigelse#tilbud">Aftal en gratis besigtigelse</a>
         <a class="btn alt" href="tel:+4577178588">Ring til os</a>
       </div>
-      <a class="hero-quote" href="bestil.html?service=erhvervsrengoering#tilbud">Få et tilbud</a>
       <div class="tags">✔ <b>Forsikret</b> &nbsp; ✔ <b>Fast kontaktperson</b> &nbsp; ✔ <b>Skriftligt tilbud</b></div>
     </div>
   </div>
@@ -237,6 +236,18 @@
         async src="//gc.zgo.at/count.js"></script>
 
 <a class="sticky-call" href="tel:+4577178588">Ring</a>
-<a class="sticky-book" href="bestil.html?service=erhvervsrengoering#book-tid">Bestil online</a>
+<a class="sticky-book" href="bestil.html?service=erhvervsrengoering&amp;visit=besigtigelse#tilbud">Aftal en gratis besigtigelse</a>
+<script>
+  (function () {
+    var source = new URLSearchParams(location.search).get('src');
+    if (!source) return;
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var target = new URL(link.href);
+      if (target.origin !== location.origin || !['/bestil.html', '/priser.html'].includes(target.pathname)) return;
+      target.searchParams.set('src', source.slice(0, 40));
+      link.href = target.href;
+    });
+  }());
+</script>
 </body>
 </html>

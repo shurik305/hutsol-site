@@ -76,8 +76,8 @@
         <h2>1 time på Thyholm</h2>
         <p class="price">600 kr.</p>
         <p>Fast pris inkl. kørsel på Thyholm.</p>
-        <p class="details">Til mindre rengøringsopgaver eller enkelt havearbejde. Skriv, at du ønsker én time, og fortæl os, hvad du gerne vil have hjælp til. Vi aftaler tidspunktet med dig.</p>
-        <a class="action" href="https://hutsol.dk/bestil.html#tilbud">Forespørg om 1 time</a>
+        <p class="details">Til mindre rengøringsopgaver eller enkelt havearbejde. Fortæl os, hvad du gerne vil have hjælp til. Vi aftaler tidspunktet med dig.</p>
+        <a class="action" href="https://hutsol.dk/bestil.html?visit=kort#tilbud">Forespørg om 1 time</a>
       </section>
       <section class="offer">
         <h2>2 timers standardbesøg</h2>
@@ -114,5 +114,17 @@
     </section>
   </main>
   <footer><div class="wrap"><strong>Hutsol Service ApS</strong> · CVR 46543610<address>Enghavevej 4, 7790 Thyholm · <a href="tel:+4577178588">+45 77 17 85 88</a> · <a href="mailto:kontakt@hutsol.dk">kontakt@hutsol.dk</a></address><a href="https://hutsol.dk/privatliv.html">Privatlivspolitik</a></div></footer>
+<script>
+  (function () {
+    var source = new URLSearchParams(location.search).get('src');
+    if (!source) return;
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var target = new URL(link.href);
+      if (target.origin !== location.origin || !['/bestil.html', '/priser.html'].includes(target.pathname)) return;
+      target.searchParams.set('src', source.slice(0, 40));
+      link.href = target.href;
+    });
+  }());
+</script>
 </body>
 </html>
