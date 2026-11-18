@@ -132,6 +132,7 @@
   .service-nav a:focus-visible{outline:3px solid var(--sun);outline-offset:4px;}
 </style>
 <link rel="stylesheet" href="assets/site-nav.css">
+<link rel="stylesheet" href="card-links.css">
 </head>
 <body class="has-sticky">
 
@@ -166,10 +167,10 @@
     <h2>Vores ydelser</h2>
     <p class="lead">Vores fokus er rengøring og praktisk service, og vi tager også faste grønne opgaver og udvalgte enkeltopgaver.</p>
     <div class="grid">
-      <div class="card"><h3>Erhvervsrengøring</h3><p>Kontorer, butikker, klinikker, trappevask og fællesarealer for boligforeninger samt byggepladsrengøring efter håndværkere. Fast aftale, tjeklister og kvalitetssikring. <a href="erhvervsrengoering.html">Læs om erhvervsrengøring</a></p></div>
-      <div class="card"><h3>Privat rengøring</h3><p>Rengøringshjælp til hjem og lejligheder. Fast rengøring, hovedrengøring eller flytterengøring efter aftale. <a href="privat-rengoering.html">Læs om privat rengøring</a></p></div>
-      <div class="card"><h3>Havehjælp og haveservice</h3><p>Græsslåning, hækklipning, ukrudt, tagrender og bortkørsel af haveaffald (450 kr. pr. trailerlæs, 275 kr. pr. halvt læs inkl. moms). Løbende eller sæsonbaseret. <a href="havehjaelp.html">Læs om havehjælp</a></p></div>
-      <div class="card"><h3>Vinduespudsning</h3><p>Vinduespudsning til butikker, klinikker, kontorer og private. Som fast aftale eller som tillægsydelse. <a href="vinduespudser.html">Læs om vinduespudsning</a></p></div>
+      <div class="card linked-card"><h3>Erhvervsrengøring</h3><p>Kontorer, butikker, klinikker, trappevask og fællesarealer for boligforeninger samt byggepladsrengøring efter håndværkere. Fast aftale, tjeklister og kvalitetssikring. <a class="card-link" href="erhvervsrengoering.html">Læs om erhvervsrengøring</a></p></div>
+      <div class="card linked-card"><h3>Privat rengøring</h3><p>Rengøringshjælp til hjem og lejligheder. Fast rengøring, hovedrengøring eller flytterengøring efter aftale. <a class="card-link" href="privat-rengoering.html">Læs om privat rengøring</a></p></div>
+      <div class="card linked-card"><h3>Havehjælp og haveservice</h3><p>Græsslåning, hækklipning, ukrudt, tagrender og bortkørsel af haveaffald (450 kr. pr. trailerlæs, 275 kr. pr. halvt læs inkl. moms). Løbende eller sæsonbaseret. <a class="card-link" href="havehjaelp.html">Læs om havehjælp</a></p></div>
+      <div class="card linked-card"><h3>Vinduespudsning</h3><p>Vinduespudsning til butikker, klinikker, kontorer og private. Som fast aftale eller som tillægsydelse. <a class="card-link" href="vinduespudser.html">Læs om vinduespudsning</a></p></div>
     </div>
   </div>
 </section>
@@ -179,7 +180,7 @@
     <h2>Aktuelt lige nu</h2>
     <p class="lead">To opgaver, vi har god tid til lige nu.</p>
     <div class="service-gallery">
-      <article class="media-card">
+      <article class="media-card linked-card">
         <img src="assets/privatrengoring.jpg" alt="Privat rengøring i et hjem" width="1200" height="800" loading="lazy" decoding="async">
         <div class="media-copy">
           <h3>Julerengøring og hovedrengøring</h3>
@@ -187,16 +188,16 @@
           <p class="price"><b>375 kr./time inkl. moms</b></p>
           <p>Ved standardbesøg fra 2 timer. <a href="priser.html">Se priser for korte besøg på Thyholm.</a></p>
           <p class="fine">Arbejdslønnen kan være berettiget til servicefradrag: ca. 26 % tilbage i skat, op til 18.300 kr. pr. person i 2026. Du indberetter selv på skat.dk.</p>
-          <a class="btn" href="bestil.html#book-tid">Bestil julerengøring</a>
+          <a class="btn card-link" href="bestil.html#book-tid">Bestil julerengøring</a>
         </div>
       </article>
-      <article class="media-card">
+      <article class="media-card linked-card">
         <img src="assets/hero-erhvervsrengoring.jpg" alt="Rengøring af kontor" width="1600" height="878" loading="lazy" decoding="async">
         <div class="media-copy">
           <h3>Fast rengøring af kontor, klinik og butik</h3>
           <p>Vi gør rent, når det passer jer – også uden for åbningstiden, så I ikke bliver forstyrret. Fast kontaktperson og tjekliste.</p>
           <p class="price"><b>Fast månedspris</b> efter en gratis besigtigelse</p>
-          <a class="btn" href="#kontakt">Få et tilbud</a>
+          <a class="btn card-link" href="#kontakt">Få et tilbud</a>
         </div>
       </article>
     </div>

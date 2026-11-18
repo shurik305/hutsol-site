@@ -19,7 +19,17 @@
     .wrap { width: min(100% - 2.5rem, 60rem); margin: auto; }
     a { color: var(--blue); text-underline-offset: .18em; }
     a:focus-visible { outline: .2rem solid #e6a600; outline-offset: .18rem; }
-    header { background: var(--navy); color: white; }
+    header {
+      color: white;
+      background-color: var(--navy);
+      background-image: linear-gradient(90deg, #112f51 15%, rgba(17,47,81,.94) 38%, rgba(17,47,81,.52) 70%, rgba(17,47,81,.42)), url("assets/privatrengoring.jpg");
+      background-position: center, right 32%;
+      background-size: cover, max(65%, 40rem) auto;
+      background-repeat: no-repeat;
+    }
+    .price-hero { padding: clamp(1.4rem, 4vw, 3rem) 0 clamp(1.8rem, 5vw, 3.5rem); }
+    .price-hero h1 { color: white; }
+    .price-hero .intro { max-width: 53ch; }
     .top, nav { display: flex; flex-wrap: wrap; align-items: center; }
     .top { justify-content: space-between; gap: .4rem 2rem; padding: 1rem 0; border-bottom: 1px solid #496382; }
     header a { color: white; text-decoration: none; }
@@ -29,7 +39,7 @@
     nav a { border: 1px solid #7990a7; border-radius: 2rem; padding: .32rem .75rem; font-size: .9rem; font-weight: 650; }
     nav a:hover, nav a[aria-current] { background: white; color: var(--navy); }
     nav .book { margin-left: auto; color: var(--ink); border-color: var(--sun); background: var(--sun); }
-    main { padding: clamp(2rem, 6vw, 4rem) 0; }
+    main { padding: 0 0 clamp(2rem, 6vw, 4rem); }
     h1, h2, h3, p { margin: 0; }
     h1, h2, h3 { line-height: 1.2; color: var(--navy); }
     h1 { font-size: clamp(2rem, 6vw, 3rem); max-width: 20ch; letter-spacing: -.035em; }
@@ -50,10 +60,16 @@
     footer { background: var(--ink); color: white; padding: 1.3rem 0; font-size: .9rem; }
     footer a { color: white; } address { font-style: normal; }
     @media (max-width: 38rem) {
+      header {
+        background-image: linear-gradient(90deg, rgba(17,47,81,.96), rgba(17,47,81,.74)), url("assets/privatrengoring.jpg");
+        background-position: center, 38% 35%;
+        background-size: cover;
+      }
       .offers, .quote { grid-template-columns: 1fr; } nav .book { margin-left: 0; }
       .top a:not(.brand) { font-size: .9rem; }
     }
   </style>
+<link rel="stylesheet" href="card-links.css">
 </head>
 <body>
   <header>
@@ -66,35 +82,37 @@
         <a href="https://hutsol.dk/priser.html" aria-current="page">Priser</a>
         <a class="book" href="https://hutsol.dk/bestil.html#book-tid">Bestil online</a>
       </nav>
+      <div class="price-hero">
+        <h1>Priser på rengøring og havehjælp</h1>
+        <p class="intro">Vælg et kort besøg på Thyholm eller et standardbesøg fra to timer. Alle priser på siden er til private og inkluderer moms.</p>
+      </div>
     </div>
   </header>
   <main class="wrap">
-    <h1>Priser på rengøring og havehjælp</h1>
-    <p class="intro">Vælg et kort besøg på Thyholm eller et standardbesøg fra to timer. Alle priser på siden er til private og inkluderer moms.</p>
     <div class="offers">
-      <section class="offer">
+      <section class="offer linked-card">
         <h2>1 time på Thyholm</h2>
         <p class="price">600 kr.</p>
         <p>Fast pris inkl. kørsel på Thyholm.</p>
         <p class="details">Til mindre rengøringsopgaver eller enkelt havearbejde. Fortæl os, hvad du gerne vil have hjælp til. Vi aftaler tidspunktet med dig.</p>
-        <a class="action" href="https://hutsol.dk/bestil.html?visit=kort#tilbud">Forespørg om 1 time</a>
+        <a class="action card-link" href="https://hutsol.dk/bestil.html?visit=kort#tilbud">Forespørg om 1 time</a>
       </section>
-      <section class="offer">
+      <section class="offer linked-card">
         <h2>2 timers standardbesøg</h2>
         <p class="price">750 kr.</p>
         <p>375 kr. pr. time ved besøg fra 2 timer.</p>
         <p class="details">Til <a href="https://hutsol.dk/privat-rengoering.html">privat rengøring</a> og <a href="https://hutsol.dk/havehjaelp.html">havehjælp</a>. Vælg to timer i kalenderen, eller send en forespørgsel, hvis du ønsker et længere besøg.</p>
-        <a class="action" href="https://hutsol.dk/bestil.html#book-tid">Vælg tid til 2 timer</a>
+        <a class="action card-link" href="https://hutsol.dk/bestil.html#book-tid">Vælg tid til 2 timer</a>
       </section>
     </div>
-    <section class="section">
+    <section class="section linked-card">
       <h2>Besøg på 3 eller 4 timer</h2>
       <dl>
         <div><dt>3 timers rengøring eller havehjælp</dt><dd>1.125 kr.</dd></div>
         <div><dt>4 timers rengøring eller havehjælp</dt><dd>1.500 kr.</dd></div>
       </dl>
       <p>Vi hjælper bl.a. i Struer, Holstebro, Lemvig og på Thyholm. Ønsker du en samlet pris for din adresse og opgave, får du et skriftligt tilbud, før du beslutter dig.</p>
-      <a href="https://hutsol.dk/bestil.html#tilbud">Forespørg om et længere besøg</a>
+      <a class="card-link" href="https://hutsol.dk/bestil.html#tilbud">Forespørg om et længere besøg</a>
     </section>
     <section class="section">
       <h2>Bortkørsel af haveaffald</h2>
@@ -108,8 +126,8 @@
     <section class="section">
       <h2>Få en pris på din opgave</h2>
       <div class="quote">
-        <div><h3>Vinduespudsning</h3><p>Fortæl os antallet af vinduer, om de skal pudses udvendigt eller på begge sider, og hvordan adgangen er. Så giver vi en pris på opgaven.</p><a href="https://hutsol.dk/bestil.html?service=vinduespudsning#tilbud">Få et tilbud på vinduespudsning</a></div>
-        <div><h3>Erhvervsrengøring</h3><p>Hvilke lokaler skal rengøres, og hvor ofte? Vi giver et skriftligt tilbud ud fra jeres behov og aftaler en besigtigelse, hvis det er relevant.</p><a href="https://hutsol.dk/bestil.html?service=erhvervsrengoering#tilbud">Få et erhvervstilbud</a></div>
+        <div class="linked-card"><h3>Vinduespudsning</h3><p>Fortæl os antallet af vinduer, om de skal pudses udvendigt eller på begge sider, og hvordan adgangen er. Så giver vi en pris på opgaven.</p><a class="card-link" href="https://hutsol.dk/bestil.html?service=vinduespudsning#tilbud">Få et tilbud på vinduespudsning</a></div>
+        <div class="linked-card"><h3>Erhvervsrengøring</h3><p>Hvilke lokaler skal rengøres, og hvor ofte? Vi giver et skriftligt tilbud ud fra jeres behov og aftaler en besigtigelse, hvis det er relevant.</p><a class="card-link" href="https://hutsol.dk/bestil.html?service=erhvervsrengoering#tilbud">Få et erhvervstilbud</a></div>
       </div>
     </section>
   </main>

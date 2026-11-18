@@ -1,0 +1,29 @@
+/* Extend the primary native link to the card edges. */
+.linked-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.linked-card .card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.linked-card a:not(.card-link) {
+  position: relative;
+  z-index: 2;
+}
+
+.linked-card:has(.card-link:focus-visible) {
+  outline: 3px solid #1f5fa6;
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .linked-card:has(.card-link:hover) {
+    box-shadow: 0 0 0 2px #1f5fa6;
+  }
+}
