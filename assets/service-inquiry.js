@@ -66,6 +66,16 @@
     "service": "Vinduespolering",
     "label": "Vinduespudsning",
     "hint": "Antal og type af vinduer samt fotos. Etage, adgang og hvilke sider der skal pudses. Ønsket hyppighed og eventuelle særlige rester."
+  },
+  "tagrender": {
+    "service": "Have- og grøn vedligeholdelse",
+    "label": "Rensning af tagrender",
+    "hint": "Fotos af huset, tagrender og adgangsveje. Antal etager, cirka højde og længden af de ønskede strækninger. Forhindringer, adgang til strøm og om materialet skal køres væk."
+  },
+  "klinikrengoering": {
+    "service": "Erhvervsrengøring",
+    "label": "Klinikrengøring",
+    "hint": "Lokaler, areal, åbningstider og ønsket hyppighed. Klinikkens rengøringsinstrukser, overflader og krav til midler. Adgang, kontaktperson og eventuelle særlige opgaver, der kræver særskilt afklaring."
   }
 };
   var key = new URLSearchParams(location.search).get('task');
