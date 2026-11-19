@@ -98,6 +98,8 @@
     @media(max-width:640px){.book-card{padding:18px;}.book-card .btn{width:100%;}.book-frame{width:calc(100% + 36px);margin:16px -18px -18px;border-radius:0 0 18px 18px;}}
   </style>
 <link rel="stylesheet" href="assets/site-nav.css">
+<link rel="stylesheet" href="assets/service-pages.css">
+<script src="assets/service-inquiry.js" defer></script>
 </head>
 <body>
 
@@ -224,6 +226,8 @@
         <input type="hidden" name="site_source" value="hutsol.dk bestil-side">
         <input type="checkbox" name="botcheck" class="hp" style="display:none;" tabindex="-1" autocomplete="off">
 
+        <p id="task-summary" hidden></p>
+        <input id="task-choice" type="hidden" name="opgave" disabled>
         <p id="visit-summary" hidden></p>
         <input id="visit-choice" type="hidden" name="besøg" disabled>
         <div class="progress" aria-live="polite">
@@ -270,6 +274,7 @@
 
         <fieldset class="wizard-step" data-step="2">
           <legend>Om opgaven</legend>
+          <p id="task-hint" hidden></p>
           <div class="field-grid">
             <div class="field">
               <label for="message">Kort beskrivelse</label>
