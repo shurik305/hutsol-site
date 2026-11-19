@@ -1,6 +1,6 @@
 /* Per-page service image; no JS, storage, tracking or form changes. */
 .photo-header{position:relative;isolation:isolate;overflow:hidden;background-color:#183a63;color:#fff}
-.photo-header::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,rgba(17,47,81,.94),rgba(17,47,81,.88) 42%,rgba(17,47,81,.48)),var(--service-image);background-size:cover;background-position:center,center 56%;background-repeat:no-repeat;pointer-events:none}
+.photo-header::before{content:"";position:absolute;inset:0;z-index:0;background-image:linear-gradient(90deg,rgba(17,47,81,.94),rgba(17,47,81,.88) 42%,rgba(17,47,81,.68)),var(--service-image);background-size:cover;background-position:center,center 56%;background-repeat:no-repeat;pointer-events:none}
 .photo-header>.wrap,.photo-header>.job-wrap{position:relative;z-index:1}
 .photo-header.job-header{padding:0 0 16px;min-height:140px}
 .photo-header.job-header a{color:#fff}
