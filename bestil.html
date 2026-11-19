@@ -97,14 +97,16 @@
     .book-card [hidden]{display:none!important;}
     @media(max-width:640px){.book-card{padding:18px;}.book-card .btn{width:100%;}.book-frame{width:calc(100% + 36px);margin:16px -18px -18px;border-radius:0 0 18px 18px;}}
   </style>
-<link rel="stylesheet" href="assets/site-nav.css">
+<link rel="stylesheet" href="assets/site-nav.css?v=384a434e48">
 <link rel="stylesheet" href="assets/service-pages.css">
 <script src="assets/service-inquiry.js" defer></script>
-<link rel="stylesheet" href="assets/service-header.css?v=0a4ca711cd">
+<link rel="stylesheet" href="assets/service-header.css?v=0e3ba5b301">
+<link rel="preload" as="image" type="image/webp" href="assets/mobile/hero-erhvervsrengoring-768.webp" media="(max-width:760px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="assets/mobile/hero-erhvervsrengoring-1536.webp" media="(min-width:761px)" fetchpriority="high">
 </head>
 <body>
 
-<header class="photo-header" style="--service-image:url('/assets/hero-erhvervsrengoring.jpg')">
+<header class="photo-header" style="--service-image:url('/assets/hero-erhvervsrengoring.jpg');--service-image-mobile:image-set(url('/assets/mobile/hero-erhvervsrengoring-768.webp') type('image/webp'),url('/assets/hero-erhvervsrengoring.jpg') type('image/jpeg'));--service-image-desktop:image-set(url('/assets/mobile/hero-erhvervsrengoring-1536.webp') type('image/webp'),url('/assets/hero-erhvervsrengoring.jpg') type('image/jpeg'))">
   <div class="wrap">
     <div class="top">
       <a class="brand" href="index.html">Hutsol <span>Service</span> ApS</a>
@@ -135,7 +137,7 @@
       <p>Privat rengøring og havehjælp: 750 kr. inkl. moms for 2 timer. <a href="priser.html">Se priser og forespørg om 1 time på Thyholm.</a></p>
       <button class="btn" type="button" id="book-tid-open" aria-expanded="false" hidden>Vis ledige tider</button>
       <noscript><p>Kalenderen kræver JavaScript. Du kan i stedet sende en forespørgsel under »Har du brug for et tilbud først?« længere nede eller ringe til os.</p></noscript>
-      <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses, når du åbner denne side. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
+      <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
       <p class="book-note"><a id="book-tid-external" href="https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec" target="_blank" rel="noopener noreferrer">Åbn kalenderen i en ny fane</a></p>
       <div id="book-tid-panel"></div>
     </section>
@@ -196,8 +198,12 @@
     </script>
     <script>
     (function () {
-      var open = document.getElementById('book-tid-open'), alt = document.getElementById('tilbud');
-      if (open && !open.hidden) open.click();
+      var open = document.getElementById('book-tid-open');
+      function openCalendar() { if (open && !open.hidden) open.click(); }
+      if (location.hash !== '#tilbud') openCalendar();
+      window.addEventListener('hashchange', function () {
+        if (location.hash === '#book-tid') openCalendar();
+      });
     }());
     </script>
     <details class="quote-alt" id="tilbud">
@@ -232,7 +238,7 @@
         <p id="visit-summary" hidden></p>
         <input id="visit-choice" type="hidden" name="besøg" disabled>
         <div class="progress" aria-live="polite">
-          <div class="progress-copy">
+          <div class="progress-copy" aria-live="polite">
             <span>Trin <span id="step-current">1</span> af 4</span>
             <strong id="step-label">Hvad skal der laves?</strong>
           </div>
@@ -365,8 +371,8 @@
             <a class="linkish" href="tel:+4577178588">Ring i stedet</a>
           </div>
           <div class="form-meta">Oplysningerne bruges kun til at vende tilbage på din henvendelse. <a href="privatliv.html">Læs privatlivspolitikken</a>.</div>
-          <div class="form-status" id="form-status" aria-live="polite"></div>
         </fieldset>
+        <div class="form-status" id="form-status" aria-live="polite" tabindex="-1"></div>
       </form>
     </div>
     </details>
@@ -455,7 +461,7 @@
   ];
   let currentStep = 0;
 
-  function syncWizard() {
+  function syncWizard(moveFocus) {
     if (!bookingForm || !steps.length) {
       return;
     }
@@ -472,6 +478,16 @@
     if (progressFill) {
       progressFill.style.width = String(((currentStep + 1) / steps.length) * 100) + '%';
     }
+    if (moveFocus) {
+      const heading = steps[currentStep].querySelector('legend');
+      if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
+      steps[currentStep].scrollIntoView({ block: 'start' });
+    }
+  }
+
+  function revealStatus() {
+    bookingStatus.focus({ preventScroll: true });
+    bookingStatus.scrollIntoView({ block: 'center' });
   }
 
   function validateStep(step) {
@@ -495,14 +511,14 @@
           return;
         }
         currentStep = Math.min(currentStep + 1, steps.length - 1);
-        syncWizard();
+        syncWizard(true);
       });
     });
 
     bookingForm.querySelectorAll('[data-prev]').forEach(function (button) {
       button.addEventListener('click', function () {
         currentStep = Math.max(currentStep - 1, 0);
-        syncWizard();
+        syncWizard(true);
       });
     });
 
@@ -517,7 +533,7 @@
         }
         if (!stepValid) {
           currentStep = i;
-          syncWizard();
+          syncWizard(true);
           validateStep(steps[i]);
           return;
         }
@@ -575,9 +591,11 @@
         syncWizard();
         bookingStatus.dataset.state = 'success';
         bookingStatus.innerHTML = 'Tak for din henvendelse. Vi vender tilbage hurtigst muligt.<br>Haster det? Ring på +45 77 17 85 88.';
+        revealStatus();
       } catch (error) {
         bookingStatus.dataset.state = 'error';
         bookingStatus.textContent = 'Noget gik galt ved afsendelse. Ring på +45 77 17 85 88 eller skriv til kontakt@hutsol.dk.';
+        revealStatus();
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = originalLabel;

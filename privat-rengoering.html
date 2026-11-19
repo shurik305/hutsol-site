@@ -136,12 +136,15 @@
   @media(max-width:760px){.service-gallery{grid-template-columns:1fr;} .hero{min-height:390px;padding:44px 0 56px;} header::before{background-position:66% center;} .quote-shell,.form-grid{grid-template-columns:1fr;}}
   @media(max-width:560px){.top{padding:14px 0;}.brand{font-size:18px;}.hero{min-height:420px;padding:40px 0 52px;}.hero h1{font-size:28px;max-width:320px;}.hero p{font-size:16px;max-width:320px;}.top .ph{display:none;}}
 </style>
-<link rel="stylesheet" href="assets/site-nav.css">
-<link rel="stylesheet" href="assets/service-header.css?v=0a4ca711cd">
+<link rel="stylesheet" href="assets/site-nav.css?v=384a434e48">
+<link rel="stylesheet" href="assets/service-header.css?v=0e3ba5b301">
+<link rel="preload" as="image" type="image/webp" href="assets/mobile/privatrengoring-768.webp" media="(max-width:760px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="assets/mobile/privatrengoring-1536.webp" media="(min-width:761px)" fetchpriority="high">
+<link rel="stylesheet" href="card-links.css">
 </head>
 <body class="has-sticky">
 
-<header class="photo-header" style="--service-image:url('/assets/privatrengoring.jpg')">
+<header class="photo-header" style="--service-image:url('/assets/privatrengoring.jpg');--service-image-mobile:image-set(url('/assets/mobile/privatrengoring-768.webp') type('image/webp'),url('/assets/privatrengoring.jpg') type('image/jpeg'));--service-image-desktop:image-set(url('/assets/mobile/privatrengoring-1536.webp') type('image/webp'),url('/assets/privatrengoring.jpg') type('image/jpeg'))">
   <div class="wrap">
     <div class="top">
       <a href="/" style="color:#fff;text-decoration:none"><div class="brand">Hutsol <span>Service</span> ApS</div></a>
@@ -172,9 +175,9 @@
     <h2>Det hjælper vi med</h2>
     <p class="lead"><b>375 kr./time inkl. moms</b> ved standardbesøg fra 2 timer (750 kr.). <a href="priser.html">Se også 1 time på Thyholm til 600 kr. inkl. moms og kørsel.</a></p>
     <div class="grid">
-      <div class="card"><h3>Fast rengøring</h3><p>Rengøringshjælp til hjem og lejligheder efter aftale.</p><p><a href="fast-rengoering.html">Læs om fast rengøring</a></p></div>
-      <div class="card"><h3>Hovedrengøring</h3><p>Grundig hovedrengøring som enkeltbesøg eller som start på fast rengøring.</p><p><a href="hovedrengoering.html">Læs om hovedrengøring</a></p></div>
-      <div class="card"><h3>Flytterengøring</h3><p>Flytterengøring efter aftale.</p><p><a href="flytterengoering.html">Læs om flytterengøring</a></p></div>
+      <div class="card linked-card"><h3>Fast rengøring</h3><p>Rengøringshjælp til hjem og lejligheder efter aftale.</p><p><a class="card-link" href="fast-rengoering.html">Læs om fast rengøring</a></p></div>
+      <div class="card linked-card"><h3>Hovedrengøring</h3><p>Grundig hovedrengøring som enkeltbesøg eller som start på fast rengøring.</p><p><a class="card-link" href="hovedrengoering.html">Læs om hovedrengøring</a></p></div>
+      <div class="card linked-card"><h3>Flytterengøring</h3><p>Flytterengøring efter aftale.</p><p><a class="card-link" href="flytterengoering.html">Læs om flytterengøring</a></p></div>
       <div class="card"><h3>Julerengøring</h3><p>Få hjemmet gjort grundigt rent inden jul: køkken, bad, gulve og vinduer.</p></div>
     </div>
     <div class="note"><b>Servicefradrag:</b> Arbejdslønnen for rengøring, vinduespudsning og havearbejde i din private bolig kan være berettiget til servicefradrag. Du indberetter selv på skat.dk.</div>

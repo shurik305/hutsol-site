@@ -131,13 +131,15 @@
   .service-nav a{color:#fff;font-size:14px;font-weight:700;text-underline-offset:4px;}
   .service-nav a:focus-visible{outline:3px solid var(--sun);outline-offset:4px;}
 </style>
-<link rel="stylesheet" href="assets/site-nav.css">
+<link rel="stylesheet" href="assets/site-nav.css?v=384a434e48">
 <link rel="stylesheet" href="card-links.css">
-<link rel="stylesheet" href="assets/service-header.css?v=0a4ca711cd">
+<link rel="stylesheet" href="assets/service-header.css?v=0e3ba5b301">
+<link rel="preload" as="image" type="image/webp" href="assets/mobile/hero-erhvervsrengoring-768.webp" media="(max-width:760px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="assets/mobile/hero-erhvervsrengoring-1536.webp" media="(min-width:761px)" fetchpriority="high">
 </head>
 <body class="has-sticky">
 
-<header class="photo-header" style="--service-image:url('/assets/hero-erhvervsrengoring.jpg')">
+<header class="photo-header" style="--service-image:url('/assets/hero-erhvervsrengoring.jpg');--service-image-mobile:image-set(url('/assets/mobile/hero-erhvervsrengoring-768.webp') type('image/webp'),url('/assets/hero-erhvervsrengoring.jpg') type('image/jpeg'));--service-image-desktop:image-set(url('/assets/mobile/hero-erhvervsrengoring-1536.webp') type('image/webp'),url('/assets/hero-erhvervsrengoring.jpg') type('image/jpeg'))">
   <div class="wrap">
     <div class="top">
       <div class="brand">Hutsol <span>Service</span> ApS</div>
@@ -182,7 +184,7 @@
     <p class="lead">To opgaver, vi har god tid til lige nu.</p>
     <div class="service-gallery">
       <article class="media-card linked-card">
-        <img src="assets/privatrengoring.jpg" alt="Privat rengøring i et hjem" width="1200" height="800" loading="lazy" decoding="async">
+        <picture><source media="(max-width:760px)" type="image/webp" srcset="assets/mobile/privatrengoring-768.webp"><source type="image/webp" srcset="assets/mobile/privatrengoring-1536.webp"><img src="assets/privatrengoring.jpg" alt="Privat rengøring i et hjem" width="1200" height="800" loading="lazy" decoding="async"></picture>
         <div class="media-copy">
           <h3>Julerengøring og hovedrengøring</h3>
           <p>Få hjemmet gjort grundigt rent inden jul: køkken, bad, gulve og vinduer. Som enkeltbesøg eller som start på fast rengøringshjælp.</p>
@@ -193,7 +195,7 @@
         </div>
       </article>
       <article class="media-card linked-card">
-        <img src="assets/hero-erhvervsrengoring.jpg" alt="Rengøring af kontor" width="1600" height="878" loading="lazy" decoding="async">
+        <picture><source media="(max-width:760px)" type="image/webp" srcset="assets/mobile/hero-erhvervsrengoring-768.webp"><source type="image/webp" srcset="assets/mobile/hero-erhvervsrengoring-1536.webp"><img src="assets/hero-erhvervsrengoring.jpg" alt="Rengøring af kontor" width="1600" height="878" loading="lazy" decoding="async"></picture>
         <div class="media-copy">
           <h3>Fast rengøring af kontor, klinik og butik</h3>
           <p>Vi gør rent, når det passer jer – også uden for åbningstiden, så I ikke bliver forstyrret. Fast kontaktperson og tjekliste.</p>
