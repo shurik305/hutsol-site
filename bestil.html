@@ -250,6 +250,10 @@
               <span>Havearbejde</span>
             </label>
             <label class="service-card">
+              <input type="radio" name="service" value="Beplantning" required>
+              <span>Beplantning af bede</span>
+            </label>
+            <label class="service-card">
               <input type="radio" name="service" value="Vinduespolering" required>
               <span>Vinduespudsning</span>
             </label>
@@ -420,6 +424,7 @@
   // Select only a known service from the entry link; the customer can change it.
   (function () {
     var defaults = {
+      beplantning: 'Beplantning',
       havearbejde: 'Have- og grøn vedligeholdelse', vinduespudsning: 'Vinduespolering',
       privatrengoering: 'Privatrengøring', erhvervsrengoering: 'Erhvervsrengøring'
     };

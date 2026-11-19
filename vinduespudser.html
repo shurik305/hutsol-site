@@ -237,5 +237,18 @@
 
 <a class="sticky-call" href="tel:+4577178588">Ring</a>
 <a class="sticky-book" href="bestil.html?service=vinduespudsning#book-tid">Bestil online</a>
+<script>
+  // Keep the campaign source in links without browser storage.
+  (function () {
+    var src = (new URLSearchParams(location.search).get('src') || '').slice(0, 40);
+    if (!src) return;
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var url = new URL(link.getAttribute('href'), location.href);
+      if (url.origin !== location.origin || !/\.html$/.test(url.pathname)) return;
+      url.searchParams.set('src', src);
+      link.setAttribute('href', url.pathname + url.search + url.hash);
+    });
+  }());
+</script>
 </body>
 </html>
