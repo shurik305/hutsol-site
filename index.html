@@ -457,6 +457,7 @@
 
         quoteForm.reset();
         quoteStatus.dataset.state = 'success';
+        if (window.hutsolTrack) window.hutsolTrack('lead');
         quoteStatus.textContent = 'Tak for din henvendelse. Vi vender tilbage hurtigst muligt.';
       } catch (error) {
         quoteStatus.dataset.state = 'error';
