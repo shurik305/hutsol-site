@@ -135,9 +135,9 @@
       <h2 id="book-tid-title">Book en tid i kalenderen</h2>
       <p>Vælg en ledig tid på 2 timer. Opgavens omfang og pris aftaler vi med dig bagefter. Skal tiden ændres eller aflyses, så ring eller skriv til os.</p>
       <p>Privat rengøring og havehjælp: 750 kr. inkl. moms for 2 timer for opgaver, der udføres i 2026. Fra 1. januar 2027: 850 kr. for 2 timer. <a href="priser.html">Se priser og forespørg om 1 time på Thyholm.</a></p>
+      <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google og indlæses først, når du klikker »Vis ledige tider«. Google kan i den forbindelse bruge cookies. <a href="privatliv.html#cookies">Læs privatlivspolitikken</a>.</p>
       <button class="btn" type="button" id="book-tid-open" aria-expanded="false" hidden>Vis ledige tider</button>
       <noscript><p>Kalenderen kræver JavaScript. Du kan i stedet sende en forespørgsel under »Har du brug for et tilbud først?« længere nede eller ringe til os.</p></noscript>
-      <p class="book-note" id="book-tid-note" hidden>Kalenderen leveres af Google. Google kan i den forbindelse bruge cookies. <a href="privatliv.html">Læs privatlivspolitikken</a>.</p>
       <p class="book-note"><a id="book-tid-external" href="https://script.google.com/macros/s/AKfycbzN99EfKnogGTQX5np45bsWANk2Lmo-NvIHTPrEQLLOJ6Lnwe-disrQBnc82uj7ZvA0/exec" target="_blank" rel="noopener noreferrer">Åbn kalenderen i en ny fane</a></p>
       <div id="book-tid-panel"></div>
     </section>
@@ -197,16 +197,6 @@
         panel.appendChild(loading);
         panel.appendChild(frame);
         button.hidden = true; button.setAttribute('aria-expanded', 'true');
-      });
-    }());
-    </script>
-    <script>
-    (function () {
-      var open = document.getElementById('book-tid-open');
-      function openCalendar() { if (open && !open.hidden) open.click(); }
-      if (location.hash !== '#tilbud') openCalendar();
-      window.addEventListener('hashchange', function () {
-        if (location.hash === '#book-tid') openCalendar();
       });
     }());
     </script>
