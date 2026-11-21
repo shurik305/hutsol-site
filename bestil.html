@@ -160,6 +160,10 @@
         frame.referrerPolicy = 'strict-origin-when-cross-origin';
         frame.src = bookingUrl;
         var bookingOrigin = 'https://n-ykfixpxvp7vdc5mq3jdgcqhwml7vfwrpjnkxpwa-0lu-script.googleusercontent.com';
+        window.addEventListener('message', function (event) {
+          if (event.origin !== bookingOrigin || !event.data || event.data.type !== 'hutsol-booking-confirmed') return;
+          if (window.hutsolTrack) window.hutsolTrack('booking');
+        });
         function ownsWindow(parent, source, depth) {
           for (var i = 0; source && i <= depth; i++) {
             if (source === parent) return true;
@@ -590,6 +594,7 @@
         currentStep = 0;
         syncWizard();
         bookingStatus.dataset.state = 'success';
+        if (window.hutsolTrack) window.hutsolTrack('lead');
         bookingStatus.innerHTML = 'Tak for din henvendelse. Vi vender tilbage hurtigst muligt.<br>Haster det? Ring på +45 77 17 85 88.';
         revealStatus();
       } catch (error) {
@@ -604,5 +609,6 @@
   }
 </script>
 
+<script src="/assets/consent.js" defer></script>
 </body>
 </html>
